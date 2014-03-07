@@ -1,0 +1,18 @@
+<html t:type="Layout" t:title='message:users'
+      xmlns:p='tapestry:parameter' xmlns:t='http://tapestry.apache.org/schema/tapestry_5_3.xsd'>
+
+    <a t:type='PageLink' class='btn btn-primary' t:page='admin/UserEdit'>
+        <i class='icon-white icon-plus-sign'></i>
+        ${message:new-user}
+    </a>
+    <br/>
+    <br/>
+
+    <div t:type='Grid' class='table table-condensed table-bordered table-stripped'
+         t:include='username, firstName, lastName, role' t:source='dataSource'
+         t:row='user'>
+        <p:usernameCell>
+            <a t:type='PageLink' t:context='user' t:page='admin/UserEdit'>${user.username}</a>
+        </p:usernameCell>
+    </div>
+</html>

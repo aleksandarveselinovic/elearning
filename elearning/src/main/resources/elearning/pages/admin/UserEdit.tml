@@ -1,0 +1,64 @@
+<html t:type="Layout" t:title='message:user-profile'
+      xmlns:t='http://tapestry.apache.org/schema/tapestry_5_3.xsd'>
+
+    <form class='main-form form-horizontal' t:type='Form' t:id='userForm'>
+        <t:errors/>
+
+        <fieldset>
+            <legend>${message:add-modify-user}</legend>
+            <t:if test='!user.id'>
+                <div class='control-group'>
+                    <label class='control-label' t:type='Label' t:for='username'/>
+
+                    <div class='controls'>
+                        <input t:type='TextField' t:id='username' t:value='user.username'/>
+                    </div>
+                </div>
+            </t:if>
+
+            <div class='control-group'>
+                <label class='control-label' t:type='Label' t:for='firstName'/>
+
+                <div class='controls'>
+                    <input t:type='TextField' t:id='firstName' t:value='user.firstName'/>
+                </div>
+            </div>
+
+            <div class='control-group'>
+                <label class='control-label' t:type='Label' t:for='lastName'/>
+
+                <div class='controls'>
+                    <input t:type='TextField' t:id='lastName' t:value='user.lastName'/>
+                </div>
+            </div>
+
+            <div class='control-group'>
+                <label class='control-label' t:type='Label' t:for='role'/>
+
+                <div class='controls'>
+                    <select t:type='Select' t:id='role' t:value="user.role"/>
+                </div>
+            </div>
+
+            <div class='control-group'>
+                <label class='control-label' t:type='Label' t:for='password'/>
+
+                <div class='controls'>
+                    <input t:type='PasswordField' t:id='password' t:value="user.password"/>
+                </div>
+            </div>
+
+            <div class='form-actions'>
+                <button type='submit' class='btn btn-primary'>${message:save}</button>
+                <t:if test='canDelete'>
+                    <a t:type='EventLink' class='btn btn-danger' t:event='delete' t:context='[user]'>
+                        ${message:delete}
+                    </a>
+                </t:if>
+                <a class='btn btn-default' t:type='PageLink' t:page='admin/Users'>${message:back}</a>
+            </div>
+        </fieldset>
+
+
+    </form>
+</html>

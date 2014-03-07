@@ -1,0 +1,40 @@
+<t:container xmlns:p='tapestry:parameter'
+             xmlns:t='http://tapestry.apache.org/schema/tapestry_5_3.xsd'>
+
+    <a data-toggle="modal" href='#questionEditorModal' class='btn btn-small btn-primary'>
+        ${message:add-question}
+    </a>
+
+    <div class='modal fade hide in' id='questionEditorModal'>
+        <div class='modal-header'>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>${message:add-modify-question}</h3>
+        </div>
+        <div t:type='Zone' t:id='questionZone'>
+            <form class='modal-form form-vertical' t:zone='^' t:type='Form' t:validate='question'
+                  t:context='[question, course]'>
+
+                <div class='modal-body'>
+                    <t:errors/>
+
+                    <div class='control-group'>
+                        <label class='control-label' t:type='Label' t:for='text'/>
+
+                        <div class='controls'>
+                            <input t:type='TextArea' rows='2' t:id='text' t:value='question.text'/>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class='modal-footer'>
+                    <button type='submit' class='btn btn-primary'>${message:save}</button>
+                    <a class='btn btn-default' data-dismiss='modal'>${message:close}</a>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+</t:container>

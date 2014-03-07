@@ -1,0 +1,16 @@
+<html t:type="Layout" t:title='message:users'
+      xmlns:p='tapestry:parameter' xmlns:t='http://tapestry.apache.org/schema/tapestry_5_3.xsd'>
+
+    <a t:type='PageLink' class='btn btn-primary' t:page='admin/CourseEdit'>
+        <i class='icon-white icon-plus-sign'></i>
+        ${message:new-course}
+    </a>
+    <br/><br/>
+    <div t:type='Grid' t:include='title' t:source='allCourses'
+         class='table table-bordered table-condensed table-striped' t:row='course'>
+        <p:titleCell>
+            <a t:type='PageLink' t:context='course' t:page='admin/CourseEdit'>${course.title}</a>
+        </p:titleCell>
+
+    </div>
+</html>

@@ -1,0 +1,143 @@
+body {
+    padding-top: 60px;
+}
+
+body input, body select, body button, body td, body tr {
+    font-size:12px;
+}
+
+body label {
+    font-weight:bold;
+}
+
+#loginWrapper {
+    padding-top: 30px;
+}
+
+.main-form {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.btn {
+    margin-right: 3px;
+}
+
+table.table {
+    margin-top: 10px;
+}
+
+*, body input, body textarea, body select {
+    font-family: "Malayalam MN";
+}
+
+body {
+    font-size: 12px;
+}
+
+.question-form textarea {
+    width: 90%;
+}
+
+.test-area {
+    margin-top: 100px;
+    width: 700px;
+    margin: 0 auto;
+}
+
+.question-text {
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+.test-label {
+    float: left;
+    font-weight: bold;
+    width: 100px;
+    text-align: right;
+}
+
+.test-detail .value {
+    float: left;
+    display: block;
+    width: 200px;
+}
+
+.question {
+    width: 500px;
+    margin: 50px auto;
+}
+
+.checkbox.alert {
+    padding: 0px 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.incorrect-answer {
+    color: red;
+}
+
+.correct-answer {
+    color:green;
+}
+
+#progressivedisplay2 {
+    display:inline;
+}
+
+form input, form select, form label, .test-result {
+    font-size:12px;
+}
+
+legend {
+    font-size:16px;
+}
+
+fieldset.answer {
+    width:90%;
+    margin:0 auto;
+}
+
+.alert.alert-info {
+    margin-top:5px;
+}
+
+.passed {
+    color:green;
+}
+
+.failed {
+    color:red;
+}
+
+
+fieldset.answer legend {
+    margin-bottom:0;
+}
+
+.answer label {
+    font-size:13px;
+    font-weight:bold;
+}
+
+.answer hr {
+    margin:2px 0;
+}
+
+form input, form textarea  {
+    width:80%;
+    font-size:12px;
+}
+
+ol.show-question li {
+    margin:15px 30px;
+}
+
+ol.show-question li input {
+    margin:0 5px;
+}
+
+body .editable-click, body a.editable-click, a.editable-click:hover {
+    border:0;
+}

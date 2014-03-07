@@ -1,0 +1,29 @@
+<html t:type='Layout' t:title='message:user-profile
+' xmlns:t='http://tapestry.apache.org/schema/tapestry_5_3.xsd'>
+    <form class='main-form form-horizontal' t:type='Form' t:id='userForm'>
+        <t:errors/>
+
+        <fieldset>
+            <legend>${message:add-modify-course}</legend>
+            <div class='control-group'>
+                <label class='control-label' t:type='Label' t:for='title'/>
+
+                <div class='controls'>
+                    <input t:type='TextField' t:id='title' t:value='course.title'/>
+                </div>
+            </div>
+
+            <div class='form-actions'>
+                <button type='submit' class='btn btn-primary'>${message:save}</button>
+                <t:if test='canDelete'>
+                    <a t:type='EventLink' class='btn btn-danger' t:event='delete' t:context='[course]'>
+                        ${message:delete}
+                    </a>
+                </t:if>
+                <a t:type='PageLink' class='btn btn-default' t:page='admin/Courses'>${message:back}</a>
+            </div>
+        </fieldset>
+
+
+    </form>
+</html>
