@@ -1,0 +1,14 @@
+<t:container xmlns:t='http://tapestry.apache.org/schema/tapestry_5_1_0.xsd' xmlns:p='tapestry:parameter'>
+    <a t:type='eventlink' t:id='link' t:event='click' t:zone='prop:zoneId'>
+
+        <span t:type='zone' t:id='zone' id='${zoneId}'>
+            <t:if test='checked'>
+                <input type='checkbox' checked='checked'/>
+                <p:else>
+                    <input type='checkbox'/>
+                </p:else>
+            </t:if>
+
+        </span>
+    </a>
+</t:container>

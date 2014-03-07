@@ -1,0 +1,28 @@
+<html t:type="Layout" t:title='message:test-templates'
+      xmlns:p='tapestry:parameter' xmlns:t='http://tapestry.apache.org/schema/tapestry_5_3.xsd'>
+
+    <a t:type='PageLink' class='btn btn-primary'
+       t:page='teacher/TestTemplateEdit'>
+        <i class='icon-white icon-plus-sign'></i>
+        ${message:new-test-template}
+    </a>
+    <br/>
+
+    <div t:type='Grid'
+         t:include='id, name,numberOfQuestions,questionsToPass,duration,startDate,endDate' t:add='course'
+         class='table table-condensed table-striped table-bordered'
+         t:source='allTemplates' t:row='template'>
+        <p:empty>
+            <div class='alert alert-block alert-info'>
+                ${message:no-data-to-display}
+            </div>
+        </p:empty>
+
+        <p:nameCell>
+            <a t:type='PageLink' t:context='template' t:page='teacher/TestTemplateEdit'>${template.name}</a>
+        </p:nameCell>
+        <p:courseCell>
+            ${template.courses}
+        </p:courseCell>
+    </div>
+</html>

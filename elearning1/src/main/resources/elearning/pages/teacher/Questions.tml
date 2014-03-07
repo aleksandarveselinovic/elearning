@@ -1,0 +1,103 @@
+<html t:type="Layout" t:title='message:users'
+      xmlns:p='tapestry:parameter'
+      xmlns:t='http://tapestry.apache.org/schema/tapestry_5_3.xsd'>
+
+    <ul class="breadcrumb">
+        <li><a t:type='pageLink' t:page='teacher/courses'>${message:manage-questions}</a> <span class="divider">/</span>
+        </li>
+        <li class="active">${course.title}</li>
+    </ul>
+
+    <div t:type='QuestionEdit' t:course='course'/>
+    <br/>
+
+    <div t:type='Grid' t:include='text' t:source='allQuestions'
+         class='table table-condensed' t:row='question'>
+        <p:empty>
+            <div class='alert alert-block alert-info'>
+                ${message:no-data-to-display}
+            </div>
+        </p:empty>
+        <p:textCell>
+            <div class='answer' t:type='zone' t:id='questionZone' id='questionZone_${question.id}'>
+                <div class=' ${disabledCss} question-text'>
+                    <a t:type='bootstrap/wysihtml5' t:id='questionText'
+                       data-mode='inline'
+                       t:value='text' t:context='[question]'>
+                        <t:outputRaw value='question.text'/>
+                    </a>
+                </div>
+
+                <ol class=' ${disabledCss} show-question'>
+                    <t:loop t:source='question.options' t:value='answerOption'>
+                        <li>
+                            <input t:type='CheckBoxSelector' t:id='correct'
+                                   t:context='[answerOption]' t:zone='^' t:checked='answerOption.correct'/>
+                            <a t:type='eventLink' t:context='[answerOption]' t:zone='^'
+                               t:event='deleteAnswerOption'>
+                                <i class='icon-trash'></i>
+                            </a>&nbsp;
+                            <a t:type='bootstrap/wysihtml5' t:id='answerText'
+                               data-mode='inline'
+                               t:value='text' t:context='[answerOption]'>
+                                <t:outputRaw value='answerOption.text'/>
+                            </a>
+
+                        </li>
+                    </t:loop>
+                </ol>
+
+
+                <a t:type='EventLink' t:event='addAnswerOption'
+                   t:context='[question]'
+                   t:id='addAnswerOption'
+                   t:zone='questionZone_${question.id}' class='btn btn-info btn-small'>
+                    <i class='icon-white icon-plus-sign'></i>
+                    ${message:add-answer-option}
+                </a>
+
+                <t:if test='!questionInUse'>
+                    <a t:type="EventLink" t:event='delete'
+                       t:id='deleteQuestion'
+                       t:context='question' class='btn btn-danger btn-small'>
+                        <i class='icon-white icon-trash'></i>
+                        ${message:delete}
+                    </a>
+                </t:if>
+                <t:if test='question.disabled'>
+                    <t:if test='hasCorrectAnswer'>
+                        <a t:type="EventLink" t:event='enable'
+                           t:id='enableQuestion'
+                           t:context='question' t:zone='^'
+                           class='btn btn-success btn-small'>
+                            <i class='icon-white icon-refresh'></i>
+                            ${message:enable}
+                        </a>
+                        <p:else>
+                            <br/>
+                            <br/>
+
+                            <div class='alert alert-error'>
+                                ${message:no-correct-answer}
+                            </div>
+                        </p:else>
+                    </t:if>
+
+
+                    <p:else>
+                        <a t:type="EventLink" t:event='disable'
+                           t:id='disableQuestion' t:zone='^'
+                           t:context='question'
+                           class='btn btn-danger btn-small'>
+                            <i class='icon-white icon-trash'></i>
+                            ${message:disable}
+                        </a>
+                    </p:else>
+
+                </t:if>
+            </div>
+
+            <br/><br/>
+        </p:textCell>
+    </div>
+</html>

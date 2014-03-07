@@ -1,0 +1,67 @@
+<html t:type="Layout" t:title='message:user-profile'
+      xmlns:p='tapestry:parameter' xmlns:t='http://tapestry.apache.org/schema/tapestry_5_3.xsd'>
+    <div class='row-fluid'>
+        <div class='span3'></div>
+        <div class='span5'>
+            <div class='test-result'>
+
+                <table class='table table-bordered table-striped table-condensed'>
+                    <tr>
+                        <td><label>${message:test-no}</label></td>
+                        <td>${test.id}</td>
+                    </tr>
+                    <tr>
+                        <td><label>${message:courses}</label></td>
+                        <td>${test.template.courses}</td>
+                    </tr>
+                    <tr>
+                        <td><label>${message:total-questions}</label></td>
+                        <td>${test.template.numberOfQuestions}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>${message:correct-answers}</label>
+                        </td>
+                        <td>
+                            ${test.correctAnswers}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>${message:result}</label></td>
+                        <td>
+                            <t:if test='hasPassed'>
+                                <span class='passed'>${message:test-passed}</span>
+                                <p:else>
+                                    <span class='failed'>${message:test-failed}</span>
+                                </p:else>
+                            </t:if>
+                        </td>
+                    </tr>
+                </table>
+                <div class='well answer' t:type='Loop' t:source='test.answers' t:index='answerIndex' t:value='answer'>
+                    <div class='question-text ${correctAnswerCssClass}'>
+                        ${prettyIndex})
+                        <t:outputRaw value='answer.question.text'/>
+                    </div>
+
+                    <t:loop t:source='questionOptions' t:index='optionIndex' t:value='answerOption'>
+                        <label class='checkbox ${correctOptionCssClass}'>
+                            <t:if test='selected'>
+                                <input type='checkbox' disabled='disabled' checked='true'/>
+                                <p:else>
+                                    <input type='checkbox' disabled='disabled'/>
+                                </p:else>
+                            </t:if>
+
+                            ${prettyOptionIndex})
+                            <t:outputRaw value='answerOption.text'/>
+                        </label>
+                    </t:loop>
+
+
+                </div>
+            </div>
+        </div>
+        <div class='span4'></div>
+    </div>
+</html>
